@@ -4,6 +4,8 @@ import { TranslationData } from '../../providers/translation-data';
 
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
 
+import { TranslationHistoryProvider } from '../../providers/translation-history/translation-history';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -12,10 +14,10 @@ export class HomePage {
 
   private speechToTextEnabled = false;
 
-  private textForTranslation:String = '';
-  private cardContent:String = '';
+  private textForTranslation:string = '';
+  private cardContent:string = '';
 
-  constructor(public navCtrl: NavController, private translation: TranslationData, private speechRecognition: SpeechRecognition) {
+  constructor(public navCtrl: NavController, private translation: TranslationData, private speechRecognition: SpeechRecognition, private translationHistory: TranslationHistoryProvider) {
 
     // test if speech to text is enabled
     this.speechRecognition.isRecognitionAvailable()
@@ -26,7 +28,7 @@ export class HomePage {
    * user input
    * @param tText 
    */
-  public translateClick(tText:String){
+  public translateClick(tText:string){
     this.textForTranslation = tText;
 
     console.log(this.textForTranslation);
@@ -34,6 +36,8 @@ export class HomePage {
     // pass text for translation to translation service
     this.translation.getTranslation(this.textForTranslation).subscribe( (result) => {
       this.cardContent = result.responseData.translatedText;
+
+      this.translationHistory.pushToHistory(this.textForTranslation, result.responseData.translatedText);
     });
   }
 

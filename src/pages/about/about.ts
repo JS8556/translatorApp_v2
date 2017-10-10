@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { TranslationHistoryProvider } from '../../providers/translation-history/translation-history';
+import { Translation } from '../../model/translation';
 
 @Component({
   selector: 'page-about',
@@ -7,8 +9,14 @@ import { NavController } from 'ionic-angular';
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController) {
+  historyArray: Translation[];
 
+  constructor(public navCtrl: NavController, private translationHistory: TranslationHistoryProvider) {
+
+  }
+
+  ionViewWillEnter () {
+    this.historyArray = this.translationHistory.getHistoryData();
   }
 
 }

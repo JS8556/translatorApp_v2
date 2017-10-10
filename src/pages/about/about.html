@@ -1,11 +1,14 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      History
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
+  <div *ngFor="let historyItem of historyArray" >{{ historyItem.translationText }} ->
+{{ historyItem.translationResult }}
+  </div>
 </ion-content>
