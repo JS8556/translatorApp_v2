@@ -10,7 +10,7 @@
     
       <ion-item>
         <ion-input #tText type="text" placeholder="Text k překladu"></ion-input>
-        <button ion-button clear item-right>
+        <button (click)="speechToText()" ion-button clear item-right>
           <ion-icon ios="ios-mic" md="md-mic"></ion-icon>
         </button>
       </ion-item>
