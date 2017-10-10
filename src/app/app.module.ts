@@ -15,6 +15,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslationData } from '../providers/translation-data';
 import { HttpModule } from '@angular/http';
 
+// speech recognition native plugin lib
+import { SpeechRecognition } from '@ionic-native/speech-recognition';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -40,6 +43,7 @@ import { HttpModule } from '@angular/http';
     StatusBar,
     SplashScreen,
     TranslationData,
+    SpeechRecognition,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
