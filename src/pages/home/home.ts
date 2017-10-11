@@ -6,6 +6,9 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition';
 
 import { TranslationHistoryProvider } from '../../providers/translation-history/translation-history';
 
+// Zone for updating UI
+import { NgZone } from '@angular/core';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -17,11 +20,11 @@ export class HomePage {
   private textForTranslation:string = '';
   private cardContent:string = '';
 
-  constructor(public navCtrl: NavController, private translation: TranslationData, private speechRecognition: SpeechRecognition, private translationHistory: TranslationHistoryProvider) {
+  constructor(public navCtrl: NavController, private translation: TranslationData, private speechRecognition: SpeechRecognition, private translationHistory: TranslationHistoryProvider, private zone:NgZone) {
 
     // test if speech to text is enabled
     this.speechRecognition.isRecognitionAvailable()
-    .then((available: boolean) => this.speechToTextEnabled = available)
+    .then((available: boolean) => this.speechToTextEnabled = available);
   }
 
   /**
@@ -35,9 +38,10 @@ export class HomePage {
 
     // pass text for translation to translation service
     this.translation.getTranslation(this.textForTranslation).subscribe( (result) => {
-      this.cardContent = result.responseData.translatedText;
+      // could be run outside of this NgZone, run it always inside, for refresh UI
+        this.cardContent = result.responseData.translatedText;
 
-      this.translationHistory.pushToHistory(this.textForTranslation, result.responseData.translatedText);
+        this.translationHistory.pushToHistory(this.textForTranslation, result.responseData.translatedText);
     });
   }
 
@@ -91,9 +95,9 @@ export class HomePage {
       (matches: Array<string>) => {
         // we get array of recognized words, lets join them and trigger the translation
        let text = matches.join(' ');
-       //this.translateClick(text);
-
-       this.cardContent = text;
+       this.zone.run(() => {
+        this.translateClick(text);
+       });
       },
       (onerror) => console.log('error:', onerror)
     );

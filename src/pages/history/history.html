@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      History
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding #item *ngFor="let historyItem of historyArray">
+      <ion-item>
+        {{ historyItem.translationText }} <ion-icon name="arrow-forward"></ion-icon> {{ historyItem.translationResult }}
+      </ion-item>
+      <ion-item-options side="left" icon-start>
+        <button ion-button (click)="hear(historyItem)">
+          <ion-icon name="volume-up"></ion-icon>
+          Hear
+        </button>
+      </ion-item-options>
+
+      <ion-item-options side="right" icon-start>
+        <button ion-button (click)="deleteHistory(historyItem)" color="danger">
+          <ion-icon name="archive"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

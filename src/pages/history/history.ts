@@ -4,10 +4,10 @@ import { TranslationHistoryProvider } from '../../providers/translation-history/
 import { Translation } from '../../model/translation';
 
 @Component({
-  selector: 'page-about',
-  templateUrl: 'about.html'
+  selector: 'page-history',
+  templateUrl: 'history.html'
 })
-export class AboutPage {
+export class HistoryPage {
 
   historyArray: Translation[];
 
@@ -19,4 +19,14 @@ export class AboutPage {
     this.historyArray = this.translationHistory.getHistoryData();
   }
 
+  public deleteHistory(item:Translation) {
+    alert('Item to delete: '+item.translationResult);
+
+    // TODO: delete item from history array
+  }
+
+  public hear(item:Translation){
+    // implement text to speech native API
+    // pass translationResult to text to speech API
+  }
 }
