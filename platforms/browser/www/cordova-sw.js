@@ -18,7 +18,7 @@ under the License.
 */
 
 // Note, these will be updated automatically at build time
-var CACHE_VERSION = '1508754211372';
+var CACHE_VERSION = '1508758172731';
 var CACHE_LIST = [
     "/assets/fonts/ionicons.eot",
     "/assets/fonts/ionicons.scss",
