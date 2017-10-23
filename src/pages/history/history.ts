@@ -26,6 +26,7 @@ export class HistoryPage {
 
     // TODO: delete item from history array
     this.historyArray = this.historyArray.filter(obj => obj !== item);
+    this.translationHistory.setHistoryData(this.historyArray);
   }
 
   public hear(item:Translation){

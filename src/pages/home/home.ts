@@ -1,12 +1,15 @@
 import { Component, Output } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TranslationData } from '../../providers/translation-data';
+import { Translation } from '../../model/translation';
 
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
 
 import { TextToSpeech } from '@ionic-native/text-to-speech';
 
 import { TranslationHistoryProvider } from '../../providers/translation-history/translation-history';
+
+import { Storage } from '@ionic/storage';
 
 // Zone for updating UI
 import { NgZone } from '@angular/core';
@@ -24,11 +27,25 @@ export class HomePage {
 
   private checkTts:boolean;
 
-  constructor(public navCtrl: NavController, private translation: TranslationData, private speechRecognition: SpeechRecognition, private translationHistory: TranslationHistoryProvider, private zone:NgZone, private tts: TextToSpeech) {
+  constructor(public navCtrl: NavController, private translation: TranslationData, private speechRecognition: SpeechRecognition, private translationHistory: TranslationHistoryProvider, private zone:NgZone, private tts: TextToSpeech, private storage: Storage) {
 
     // test if speech to text is enabled
     this.speechRecognition.isRecognitionAvailable()
     .then((available: boolean) => this.speechToTextEnabled = available);
+
+    //load data from local storage
+    this.storage.get('ttsChecked').then((val:boolean) => {
+      console.log('Tts checked: ' + val);
+      if(val != null)
+      {
+        this.checkTts = val;
+      }else{
+        this.checkTts = false;
+      }
+    });
+
+    
+
   }
 
   /**
@@ -59,6 +76,7 @@ export class HomePage {
 
   public updateTts(){
     console.log('Tts changed to: ' + this.checkTts);
+    this.storage.set('ttsChecked', this.checkTts);
   }
 
   /**

@@ -20,6 +20,8 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition';
 import { TranslationHistoryProvider } from '../providers/translation-history/translation-history';
 import { TextToSpeech } from '@ionic-native/text-to-speech';
 
+import { IonicStorageModule } from '@ionic/storage';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -31,7 +33,8 @@ import { TextToSpeech } from '@ionic-native/text-to-speech';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
