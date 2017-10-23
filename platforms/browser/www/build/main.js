@@ -9,7 +9,7 @@ webpackJsonp([0],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(101);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(197);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__model_translation__ = __webpack_require__(270);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__model_translation__ = __webpack_require__(271);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -93,7 +93,7 @@ webpackEmptyAsyncContext.id = 152;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__about_about__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__history_history__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__contact_contact__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(199);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -112,13 +112,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var TabsPage = (function () {
     function TabsPage() {
         this.tab1Root = __WEBPACK_IMPORTED_MODULE_3__home_home__["a" /* HomePage */];
-        this.tab2Root = __WEBPACK_IMPORTED_MODULE_1__about_about__["a" /* AboutPage */];
+        this.tab2Root = __WEBPACK_IMPORTED_MODULE_1__history_history__["a" /* HistoryPage */];
         this.tab3Root = __WEBPACK_IMPORTED_MODULE_2__contact_contact__["a" /* ContactPage */];
     }
     return TabsPage;
 }());
 TabsPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"C:\Users\student\Documents\a9mte\a9mte-ionic-translator-project\src\pages\tabs\tabs.html"*/'<ion-tabs>\n\n  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>\n\n  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>\n\n</ion-tabs>\n\n'/*ion-inline-end:"C:\Users\student\Documents\a9mte\a9mte-ionic-translator-project\src\pages\tabs\tabs.html"*/
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"D:\IONIC\tts\translatorApp_v2\src\pages\tabs\tabs.html"*/'<ion-tabs>\n\n  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>\n\n  <ion-tab [root]="tab2Root" tabTitle="History" tabIcon="archive"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>\n\n</ion-tabs>\n\n'/*ion-inline-end:"D:\IONIC\tts\translatorApp_v2\src\pages\tabs\tabs.html"*/
     }),
     __metadata("design:paramtypes", [])
 ], TabsPage);
@@ -131,7 +131,7 @@ TabsPage = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HistoryPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_translation_history_translation_history__ = __webpack_require__(100);
@@ -147,24 +147,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var AboutPage = (function () {
-    function AboutPage(navCtrl, translationHistory) {
+var HistoryPage = (function () {
+    function HistoryPage(navCtrl, translationHistory) {
         this.navCtrl = navCtrl;
         this.translationHistory = translationHistory;
     }
-    AboutPage.prototype.ionViewWillEnter = function () {
+    HistoryPage.prototype.ionViewWillEnter = function () {
         this.historyArray = this.translationHistory.getHistoryData();
     };
-    return AboutPage;
+    HistoryPage.prototype.deleteHistory = function (item) {
+        alert('Item to delete: ' + item.translationResult);
+        // TODO: delete item from history array
+    };
+    HistoryPage.prototype.hear = function (item) {
+        // implement text to speech native API
+        // pass translationResult to text to speech API
+    };
+    return HistoryPage;
 }());
-AboutPage = __decorate([
+HistoryPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-about',template:/*ion-inline-start:"C:\Users\student\Documents\a9mte\a9mte-ionic-translator-project\src\pages\about\about.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      History\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n  <div *ngFor="let historyItem of historyArray" >{{ historyItem.translationText }} ->\n\n{{ historyItem.translationResult }}\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\student\Documents\a9mte\a9mte-ionic-translator-project\src\pages\about\about.html"*/
+        selector: 'page-history',template:/*ion-inline-start:"D:\IONIC\tts\translatorApp_v2\src\pages\history\history.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      History\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <ion-list>\n\n    <ion-item-sliding #item *ngFor="let historyItem of historyArray">\n\n      <ion-item>\n\n        {{ historyItem.translationText }} <ion-icon name="arrow-forward"></ion-icon> {{ historyItem.translationResult }}\n\n      </ion-item>\n\n      <ion-item-options side="left" icon-start>\n\n        <button ion-button (click)="hear(historyItem)">\n\n          <ion-icon name="volume-up"></ion-icon>\n\n          Hear\n\n        </button>\n\n      </ion-item-options>\n\n\n\n      <ion-item-options side="right" icon-start>\n\n        <button ion-button (click)="deleteHistory(historyItem)" color="danger">\n\n          <ion-icon name="archive"></ion-icon>\n\n          Delete\n\n        </button>\n\n      </ion-item-options>\n\n    </ion-item-sliding>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\IONIC\tts\translatorApp_v2\src\pages\history\history.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_translation_history_translation_history__["a" /* TranslationHistoryProvider */]])
-], AboutPage);
+], HistoryPage);
 
-//# sourceMappingURL=about.js.map
+//# sourceMappingURL=history.js.map
 
 /***/ }),
 
@@ -194,7 +202,7 @@ var ContactPage = (function () {
 }());
 ContactPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-contact',template:/*ion-inline-start:"C:\Users\student\Documents\a9mte\a9mte-ionic-translator-project\src\pages\contact\contact.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Contact\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n\n    <ion-item>\n\n      <ion-icon name="ionic" item-left></ion-icon>\n\n      @ionicframework\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\student\Documents\a9mte\a9mte-ionic-translator-project\src\pages\contact\contact.html"*/
+        selector: 'page-contact',template:/*ion-inline-start:"D:\IONIC\tts\translatorApp_v2\src\pages\contact\contact.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Contact\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n\n    <ion-item>\n\n      <ion-icon name="ionic" item-left></ion-icon>\n\n      @ionicframework\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\IONIC\tts\translatorApp_v2\src\pages\contact\contact.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
 ], ContactPage);
@@ -212,7 +220,8 @@ ContactPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_translation_data__ = __webpack_require__(200);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_speech_recognition__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_translation_history_translation_history__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_text_to_speech__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_translation_history_translation_history__ = __webpack_require__(100);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -227,13 +236,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+// Zone for updating UI
+
 var HomePage = (function () {
-    function HomePage(navCtrl, translation, speechRecognition, translationHistory) {
+    function HomePage(navCtrl, translation, speechRecognition, translationHistory, zone, tts) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.translation = translation;
         this.speechRecognition = speechRecognition;
         this.translationHistory = translationHistory;
+        this.zone = zone;
+        this.tts = tts;
         this.speechToTextEnabled = false;
         this.textForTranslation = '';
         this.cardContent = '';
@@ -251,9 +265,18 @@ var HomePage = (function () {
         console.log(this.textForTranslation);
         // pass text for translation to translation service
         this.translation.getTranslation(this.textForTranslation).subscribe(function (result) {
+            // could be run outside of this NgZone, run it always inside, for refresh UI
             _this.cardContent = result.responseData.translatedText;
             _this.translationHistory.pushToHistory(_this.textForTranslation, result.responseData.translatedText);
+            if (_this.checkTts) {
+                _this.tts.speak(result.responseData.translatedText)
+                    .then(function () { return console.log('Success: ' + result.responseData.translatedText); })
+                    .catch(function (reason) { return console.log(reason); });
+            }
         });
+    };
+    HomePage.prototype.updateTts = function () {
+        console.log('Tts changed to: ' + this.checkTts);
     };
     /**
      *  Event handler for speech recognition
@@ -297,17 +320,18 @@ var HomePage = (function () {
             .subscribe(function (matches) {
             // we get array of recognized words, lets join them and trigger the translation
             var text = matches.join(' ');
-            //this.translateClick(text);
-            _this.cardContent = text;
+            _this.zone.run(function () {
+                _this.translateClick(text);
+            });
         }, function (onerror) { return console.log('error:', onerror); });
     };
     return HomePage;
 }());
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"C:\Users\student\Documents\a9mte\a9mte-ionic-translator-project\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Home</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <h2>Translator</h2>\n\n  <ion-list>\n\n    \n\n      <ion-item>\n\n        <ion-input #tText type="text" placeholder="Text k překladu"></ion-input>\n\n        <button (click)="speechToText()" ion-button clear item-right>\n\n          <ion-icon ios="ios-mic" md="md-mic"></ion-icon>\n\n        </button>\n\n      </ion-item>\n\n     \n\n\n\n    </ion-list>\n\n\n\n    <button (click)="translateClick(tText.value)" ion-button full>Translate</button>\n\n\n\n    <ion-card>\n\n      \n\n        <ion-card-header>\n\n          Translated\n\n        </ion-card-header>\n\n      \n\n        <ion-card-content>\n\n           {{ cardContent }}\n\n        </ion-card-content>\n\n      \n\n      </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\student\Documents\a9mte\a9mte-ionic-translator-project\src\pages\home\home.html"*/
+        selector: 'page-home',template:/*ion-inline-start:"D:\IONIC\tts\translatorApp_v2\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Translator</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <ion-list>\n\n    \n\n      <ion-item>\n\n        <ion-input #tText type="text" placeholder="Text k překladu"></ion-input>\n\n        <button (click)="speechToText()" ion-button clear item-right>\n\n          <ion-icon ios="ios-mic" md="md-mic"></ion-icon>\n\n        </button>\n\n      </ion-item>\n\n     \n\n\n\n    </ion-list>\n\n\n\n    <button (click)="translateClick(tText.value)" ion-button full>Translate</button>\n\n\n\n    <ion-item>\n\n      <ion-label>Text to speech</ion-label>\n\n      <ion-checkbox [(ngModel)]="checkTts" (ionChange)="updateTts()" color="dark"></ion-checkbox>\n\n    </ion-item>\n\n\n\n    <ion-card>\n\n      \n\n        <ion-card-header>\n\n          Translated\n\n        </ion-card-header>\n\n      \n\n        <ion-card-content>\n\n           {{ cardContent }}\n\n        </ion-card-content>\n\n      \n\n      </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\IONIC\tts\translatorApp_v2\src\pages\home\home.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_translation_data__["a" /* TranslationData */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_speech_recognition__["a" /* SpeechRecognition */], __WEBPACK_IMPORTED_MODULE_4__providers_translation_history_translation_history__["a" /* TranslationHistoryProvider */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_translation_data__["a" /* TranslationData */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_speech_recognition__["a" /* SpeechRecognition */], __WEBPACK_IMPORTED_MODULE_5__providers_translation_history_translation_history__["a" /* TranslationHistoryProvider */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* NgZone */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_text_to_speech__["a" /* TextToSpeech */]])
 ], HomePage);
 
 //# sourceMappingURL=home.js.map
@@ -362,13 +386,13 @@ TranslationData = __decorate([
 
 /***/ }),
 
-/***/ 202:
+/***/ 203:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(222);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -376,7 +400,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 221:
+/***/ 222:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -384,8 +408,8 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(261);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_about_about__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(262);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_history_history__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_contact_contact__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_tabs_tabs__ = __webpack_require__(195);
@@ -395,6 +419,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_http__ = __webpack_require__(101);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_speech_recognition__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_translation_history_translation_history__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ionic_native_text_to_speech__ = __webpack_require__(202);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -417,6 +442,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 // speech recognition native plugin lib
 
 
+
 var AppModule = (function () {
     function AppModule() {
     }
@@ -426,7 +452,7 @@ AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
             __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */],
-            __WEBPACK_IMPORTED_MODULE_4__pages_about_about__["a" /* AboutPage */],
+            __WEBPACK_IMPORTED_MODULE_4__pages_history_history__["a" /* HistoryPage */],
             __WEBPACK_IMPORTED_MODULE_5__pages_contact_contact__["a" /* ContactPage */],
             __WEBPACK_IMPORTED_MODULE_6__pages_home_home__["a" /* HomePage */],
             __WEBPACK_IMPORTED_MODULE_7__pages_tabs_tabs__["a" /* TabsPage */]
@@ -441,7 +467,7 @@ AppModule = __decorate([
         bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* IonicApp */]],
         entryComponents: [
             __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */],
-            __WEBPACK_IMPORTED_MODULE_4__pages_about_about__["a" /* AboutPage */],
+            __WEBPACK_IMPORTED_MODULE_4__pages_history_history__["a" /* HistoryPage */],
             __WEBPACK_IMPORTED_MODULE_5__pages_contact_contact__["a" /* ContactPage */],
             __WEBPACK_IMPORTED_MODULE_6__pages_home_home__["a" /* HomePage */],
             __WEBPACK_IMPORTED_MODULE_7__pages_tabs_tabs__["a" /* TabsPage */]
@@ -451,6 +477,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_9__ionic_native_splash_screen__["a" /* SplashScreen */],
             __WEBPACK_IMPORTED_MODULE_10__providers_translation_data__["a" /* TranslationData */],
             __WEBPACK_IMPORTED_MODULE_12__ionic_native_speech_recognition__["a" /* SpeechRecognition */],
+            __WEBPACK_IMPORTED_MODULE_14__ionic_native_text_to_speech__["a" /* TextToSpeech */],
             { provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicErrorHandler */] },
             __WEBPACK_IMPORTED_MODULE_13__providers_translation_history_translation_history__["a" /* TranslationHistoryProvider */]
         ]
@@ -461,7 +488,7 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 261:
+/***/ 262:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -498,7 +525,7 @@ var MyApp = (function () {
     return MyApp;
 }());
 MyApp = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"C:\Users\student\Documents\a9mte\a9mte-ionic-translator-project\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Users\student\Documents\a9mte\a9mte-ionic-translator-project\src\app\app.html"*/
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"D:\IONIC\tts\translatorApp_v2\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"D:\IONIC\tts\translatorApp_v2\src\app\app.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
 ], MyApp);
@@ -507,7 +534,7 @@ MyApp = __decorate([
 
 /***/ }),
 
-/***/ 270:
+/***/ 271:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -524,5 +551,5 @@ var Translation = (function () {
 
 /***/ })
 
-},[202]);
+},[203]);
 //# sourceMappingURL=main.js.map

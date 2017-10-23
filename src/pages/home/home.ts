@@ -4,6 +4,8 @@ import { TranslationData } from '../../providers/translation-data';
 
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
 
+import { TextToSpeech } from '@ionic-native/text-to-speech';
+
 import { TranslationHistoryProvider } from '../../providers/translation-history/translation-history';
 
 // Zone for updating UI
@@ -20,7 +22,9 @@ export class HomePage {
   private textForTranslation:string = '';
   private cardContent:string = '';
 
-  constructor(public navCtrl: NavController, private translation: TranslationData, private speechRecognition: SpeechRecognition, private translationHistory: TranslationHistoryProvider, private zone:NgZone) {
+  private checkTts:boolean;
+
+  constructor(public navCtrl: NavController, private translation: TranslationData, private speechRecognition: SpeechRecognition, private translationHistory: TranslationHistoryProvider, private zone:NgZone, private tts: TextToSpeech) {
 
     // test if speech to text is enabled
     this.speechRecognition.isRecognitionAvailable()
@@ -42,7 +46,19 @@ export class HomePage {
         this.cardContent = result.responseData.translatedText;
 
         this.translationHistory.pushToHistory(this.textForTranslation, result.responseData.translatedText);
+
+        if(this.checkTts){
+          this.tts.speak(result.responseData.translatedText)
+          .then(() => console.log('Success: ' + result.responseData.translatedText))
+          .catch((reason: any) => console.log(reason));
+        }
+
     });
+  }
+
+
+  public updateTts(){
+    console.log('Tts changed to: ' + this.checkTts);
   }
 
   /**

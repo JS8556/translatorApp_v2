@@ -18,6 +18,7 @@ import { HttpModule } from '@angular/http';
 // speech recognition native plugin lib
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
 import { TranslationHistoryProvider } from '../providers/translation-history/translation-history';
+import { TextToSpeech } from '@ionic-native/text-to-speech';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { TranslationHistoryProvider } from '../providers/translation-history/tra
     SplashScreen,
     TranslationData,
     SpeechRecognition,
+    TextToSpeech,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     TranslationHistoryProvider
   ]

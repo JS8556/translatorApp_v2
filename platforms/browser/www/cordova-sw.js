@@ -18,7 +18,7 @@ under the License.
 */
 
 // Note, these will be updated automatically at build time
-var CACHE_VERSION = '1507654404721';
+var CACHE_VERSION = '1508754211372';
 var CACHE_LIST = [
     "/assets/fonts/ionicons.eot",
     "/assets/fonts/ionicons.scss",
@@ -67,6 +67,7 @@ var CACHE_LIST = [
     "/plugins/cordova-plugin-splashscreen/www/splashscreen.js",
     "/plugins/cordova-plugin-statusbar/src/browser/StatusBarProxy.js",
     "/plugins/cordova-plugin-statusbar/www/statusbar.js",
+    "/plugins/cordova-plugin-tts/www/tts.js",
     "/plugins/ionic-plugin-keyboard/www/browser/keyboard.js",
     "/service-worker.js"
 ];
